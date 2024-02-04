@@ -1,10 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <color name="colorPrimary">#FFffff</color>
+    <!--    <color name="colorPrimaryDark">#2dcc70</color>-->
+    <color name="colorPrimaryDark">#01bf07</color>
+    <color name="divider_color">#FBCC25</color>
+    <color name="colorAccent">#2196F3</color>
+
+    <color name="colorAccentClub">#1F423F</color>
+    <color name="colorPrimaryDarkClub">#42dc86</color>
+    <color name="backgroundColorClub">#f8f8f8</color>
+    <color name="btnOkBackgroundClub">#5CB1A8</color>
+
+    <color name="preview_bottom_toolbar_bg">#CC000000</color>
+    <color name="preview_bottom_size">#61FFFFFF</color>
+    <color name="table_view_default_separator_color">#E7E7E7</color>
+    <color name="back_color">#ebfaf3</color>
+    <color name="table_view_default_unselected_background_color">#ffffff</color>
+    <color name="table_view_default_selected_background_color">#fada65</color>
+    <color name="table_view_default_shadow_background_color">#f2f2f2</color>
+
+
+    <!--Palette-->
+    <color name="ucrop_color_black">#000</color>
+    <color name="ucrop_color_blaze_orange">#FF6300</color>
+    <color name="ucrop_color_ebony_clay">#20242F</color>
+    <color name="ucrop_color_heather">#B3BECE</color>
+    <color name="ucrop_color_white">#FFF</color>
+
+    <!--uCrop Activity-->
+    <color name="ucrop_color_toolbar">@color/ucrop_color_white</color>
+    <color name="ucrop_color_statusbar">#f5f5f5</color>
+    <color name="ucrop_color_toolbar_widget">@color/ucrop_color_black</color>
+    <color name="ucrop_color_widget">@color/ucrop_color_black</color>
+    <color name="ucrop_color_widget_active">@color/ucrop_color_white</color>
+    <color name="ucrop_color_active_controls_color">@color/ucrop_color_blaze_orange</color>
+    <color name="ucrop_color_inactive_controls_color">@color/ucrop_color_heather</color>
+    <color name="ucrop_color_widget_rotate_mid_line">@color/ucrop_color_blaze_orange</color>
+    <color name="ucrop_color_widget_rotate_angle">@color/ucrop_color_ebony_clay</color>
+    <color name="ucrop_color_active_aspect_ratio">@color/ucrop_color_blaze_orange</color>
+    <color name="ucrop_color_inactive_aspect_ratio">@color/ucrop_color_ebony_clay</color>
+    <color name="ucrop_color_widget_background">@color/ucrop_color_ebony_clay</color>
+    <color name="ucrop_color_widget_text">@color/ucrop_color_blaze_orange</color>
+    <color name="ucrop_color_progress_wheel_line">@color/ucrop_color_ebony_clay</color>
+    <color name="ucrop_color_crop_background">@color/ucrop_color_black</color>
+
+    <!--Crop View-->
+    <color name="ucrop_color_default_crop_grid">#80ffffff</color>
+    <color name="ucrop_color_default_crop_frame">#ffffff</color>
+    <color name="ucrop_color_default_dimmed">#8c000000</color>
+    <color name="ucrop_color_default_logo">#4f212121</color>
+    /** bitmap picker */
+    <color name="option_pressed">#e9e4e4</color>
+    <color name="option_text_pressed">#000000</color>
+    <color name="option_text">#080808</color>
+    <!-- DownLoadHeaderDto colors -->
+    <color name="headerBackgroundColor">#42dc86</color>
+
+    <!--Button colors-->
+    <color name="buttonBackgroundColor">@color/headerBackgroundColor</color>
+
+    <!-- Fonts -->
+    <color name="date_color">#000</color>
+    <color name="week_color">#717171</color>
+
+    <!-- Calendar Date -->
+    <color name="default_date_color">#2b303d</color>
+    <color name="disable_date_color">#BDBDBD</color>
+    <color name="range_date_color">@color/default_date_color</color>
+    <color name="selected_date_color">#FFF</color>
+    <color name="range_bg_color">#deccddf7</color>
+
+    <color name="calendar_text">#474747</color>
+
+    <color name="header_color">#e4215d</color>
+    <color name="header_title_color">#ffffff</color>
+
+    <color name="holiday_date_color">#bf00bf</color>
+    <color name="event_date_color">#0097e2</color>
+    <color name="today_date_color">#51bf4b</color>
+
+    <color name="selected_date_circle_color">#2b303d</color>
+    <color name="range_color">#ccddf7</color>
+    <!--<color name="range_color1">#e4215d</color>-->
+
+    /** table view */
+    <color name="bgSolidDark">#55000000</color>
+    <color name="cell_background_color">#ffffff</color>
+    <color name="header_line_color">#5BB9AF</color>
+    <color name="bg_line">#E7E7E7</color>
+
+    <color name="table_view_default_text_color">#0a0a0a</color>
+    /** Table view */
+    <color name="colorRow">#F0F4F8</color>
+    <color name="colorEditBackground">#DBE2ED</color>
+    <color name="colorDeleteBackground">#A6BCD0</color>
+    <color name="fontColorWhite">#FFFFFF</color>
+    <color name="fontColorBlack">#4f5b66</color>
+    <color name="fontColorBlackLite">#acacac</color>
+    <color name="backgroundColor">#f7f7f7</color>
+    <color name="backgroundColor2">#eef2fe</color>
+    <color name="productList2Background">#23baa9</color>
+    <color name="productList3Background">#f1ebfd</color>
+    <color name="productList4Background">#fffced</color>
+    <color name="productList7Background">#8cc63e</color>
+    <color name="productList8Background">#68ecb3</color>
+    <color name="shadow">#D0000000</color>
+    <color name="select_color">#2e2e32</color>
+    /** space navigation view */
+    <color name="space_transparent">#00000000</color>
+    <color name="space_white">#7BED8D</color>
+    <color name="space_default_color">#2A3137</color>
+    <color name="centre_button_color">#748A9D</color>
+    <color name="default_inactive_item_color">#9e9e9e</color>
+    <color name="badge_background_color">#FF4081</color>
+    <color name="colorBackgroundHighlightWhite">#8dffffff</color>
+
+    <color name="material_grey_500">#9E9E9E</color>
+    <color name="material_grey_400">#BDBDBD</color>
+    <color name="material_red_500">#F44336</color>
+    <color name="material_blue_500">#2196F3</color>
+
+    <color name="toastBackColor">#FF4081</color>
+    <color name="toastTextColor">#FF4081</color>
+    <color name="colorPrimaryDesAlpha">#9f005952</color>
+    <color name="fontColor">#748A9D</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorOverlayLight">#40000000</color>
+    <color name="colorOverlayDark">#AA000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red2">#ef394e</color>
+    /** bitmap picker */
+
+    /** step view */
+    <color name="stepview_line_done">@android:color/white</color>
+    <color name="stepview_line_next">#26ffffff</color>
+    <color name="stepview_text_next">#40ffffff</color>
+    <color name="stepview_text_done">#40ffffff</color>
+    <color name="stepview_text_selected">@android:color/white</color>
+    <color name="stepview_circle_done">@android:color/white</color>
+    <color name="stepview_circle_selected">@android:color/white</color>
+    <color name="stepview_selected_number">#25448a</color>
+    <color name="stepview_mark">@color/stepview_selected_number</color>
+    /** ec collection */
+    <color name="transparent">#00ffffff</color>
+
+    /** persistent_search_view */
+    <color name="persistent_search_view_background_dim_color">#000000</color>
+    <color name="persistent_search_view_card_background_color">#ffffff</color>
+    <color name="persistent_search_view_query_input_hint_color">#b6b6b6</color>
+    <color name="persistent_search_view_query_input_text_color">#a0a0a0</color>
+    <color name="persistent_search_view_query_input_cursor_color">#212121</color>
+    <color name="persistent_search_view_query_input_bar_icon_color">#a0a0a0</color>
+    <color name="persistent_search_view_divider_color">#a0a0a0</color>
+    <color name="persistent_search_view_progress_bar_color">#FF4081</color>
+    <color name="persistent_search_view_suggestion_item_icon_color">#a0a0a0</color>
+    <color name="persistent_search_view_suggestion_item_search_suggestion_icon_color">#212121
+    </color>
+    <color name="persistent_search_view_suggestion_item_recent_search_icon_color">#a0a0a0</color>
+    <color name="persistent_search_view_suggestion_item_text_color">#212121</color>
+    <color name="persistent_search_view_suggestion_item_selected_text_color">#a0a0a0</color>
+    /** table view */
+
+    <color name="headGradientStart">#00ffffff</color>
+    <color name="headGradientCenter">#00ffffff</color>
+    <color name="headGradientEnd">#96000000</color>
+
+    <color name="colorListDivider">#e6e6e6</color>
+    /** Table view */
+    /** dialog view */
+    <color name="cfdialog_title_font_color">#748A9D</color>
+    <color name="cfdialog_desc_font_color">#748A9D</color>
+    <color name="btnCancelColor">#FF4081</color>
+    <color name="cfdialog_default_button_text_color">#263238</color>
+    <color name="cfdialog_button_white_text_color">#ffffff</color>
+    <color name="glasses_color">#AA000000</color>
+    <color name="cardBackgroundColor">#ffffff</color>
+    <color name="primaryTextColor">#212121</color>
+    <color name="secondaryTextColor">#657786</color>
+    <color name="iconColor">#657786</color>
+    <color name="dividerColor">#657786</color>
+    <color name="suggestionIconColor">#657786</color>
+    <color name="suggestionTextColor">#657786</color>
+    <color name="suggestionSelectedTextColor">#212121</color>
+
+    /** date encodedImage picker dialog view */
+
+    <!-- DatePicker Dark Theme -->
+
+    <!-- TimePicker Dark Theme -->
+
+    <!-- Colors for red theme -->
+    <!-- Colors for FM_Navigator -->
+    <color name="default_inactive_shape_color">#e5e5e5</color>
+    <color name="default_inactive_color">#212121</color>
+    <color name="default_badge_background_color">#f44336</color>
+    <color name="default_badge_text_color">#ffffff</color>
+    <color name="red_active">#f44336</color>
+    <color name="purple_active">#9c27b0</color>
+    <color name="blue_active">#03a9f4</color>
+    <color name="green_active">#4caf50</color>
+    <color name="yellow_active">#ffeb3b</color>
+    <color name="orange_active">#ff9800</color>
+
+    <color name="gery_inactive">#e0e0e0</color>
+    <color name="red500">#db4437</color>
+    <color name="black">#000000</color>
+    <color name="Black_Cat">#413839</color>
+    <color name="Black_Cow">#4C4646</color>
+    <color name="Blue_Gray">#98AFC7</color>
+    <color name="Green_Apple">#8bde46</color>
+    <color name="Green">#00FF00</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Rubber_Ducky_Yellow">#f2c001</color>
+    <color name="Golden_brown">#EAC117</color>
+    <color name="Medium_Violet_Red">#CA226B</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- orange Transparent -->
+    <!-- red Transparent -->
+    <!-- blue Transparent -->
+    <!-- Black Transparent -->
+    <color name="transparent_black_hex_2">#22000000</color>
+    <color name="transparent_black_hex_5">#55000000</color>
+    <color name="transparent_black_hex_6">#66000000</color>
+    <color name="transparent_black_hex_8">#88000000</color>
+    <color name="transparent_black_hex_9">#99000000</color>
+    <color name="transparent_black_hex_10">#aa000000</color>
+    <color name="transparent_black_hex_11">#bb000000</color>
+    <color name="transparent_black_hex_12">#cc000000</color>
+    <!-- primary_dark Transparent -->
+    <color name="transparent_primary_dark_hex_10">#aa2dcc70</color>
+    <color name="transparent_primary_dark_hex_6">#662dcc70</color>
+    <color name="transparent_accent_hex_10">#aa10aeae</color>
+    <color name="transparent_accent_hex_2">#2210aeae</color>
+    <color name="transparent_accent_hex_5">#5510aeae</color>
+
+
+    <!-- White Transparent -->
+    <color name="transparent_white_hex_12">#ccffffff</color>
+    <color name="transparent_white_hex_15">#ffffffff</color>
+
+    <color name="black_overlay">#66000000</color>
+
+
+    <!--  Useful colors  -->
+    <color name="colorTransparent">#00ffffff</color>
+
+    <!--  indicator  -->
+    <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
+    <color name="default_circle_indicator_page_color">#00000000</color>
+    <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
+    <color name="default_line_indicator_selected_color">#FF33B5E5</color>
+    <color name="default_line_indicator_unselected_color">#FFBBBBBB</color>
+    <color name="default_title_indicator_footer_color">#FF33B5E5</color>
+    <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
+    <color name="default_title_indicator_text_color">#BBFFFFFF</color>
+    <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
+
+
+    <color name="color_1">#cbe4f9</color>
+    <color name="color_2">#cdf5f6</color>
+    <color name="color_3">#eff9da</color>
+    <color name="color_4">#f9ebdf</color>
+    <color name="color_5">#f9d8d6</color>
+    <color name="color_6">#d6cdea</color>
+    <color name="color_7">#8E24AA</color>
+    <color name="color_8">#4A148C</color>
+    <color name="color_9">#B39DDB</color>
+    <color name="color_10">#673AB7</color>
+    <color name="color_11">#311B92</color>
+    <color name="color_12">#3D5AFE</color>
+    <color name="color_13">#29B6F6</color>
+    <color name="color_14">#26C6DA</color>
+    <color name="color_15">#26A69A</color>
+    <color name="color_16">#4CAF50</color>
+    <color name="color_17">#8BC34A</color>
+    <color name="color_18">#CDDC39</color>
+    <color name="color_19">#FFEB3B</color>
+    <color name="color_20">#FFC107</color>
+    <color name="color_21">#FF9800</color>
+    <color name="color_22">#FF5722</color>
+    <color name="color_23">#795548</color>
+    <color name="color_24">#9E9E9E</color>
+    <color name="color_25">#607D8B</color>
+
+    <color name="Orange">#ff5304</color>
+    <color name="Blue">#4674e7</color>
+
+    <color name="scratch_start_gradient">#e5e5e5</color>
+    <color name="scratch_end_gradient">#cccccc</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
 </resources>
