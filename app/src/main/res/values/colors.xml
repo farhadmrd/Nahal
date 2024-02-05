@@ -19,7 +19,14 @@
     <color name="table_view_default_selected_background_color">#fada65</color>
     <color name="table_view_default_shadow_background_color">#f2f2f2</color>
 
+    <color name="dirty_yellow">#FBCC25</color>
+    <color name="dirty_green">#01bf07</color>
+    <color name="info">#35C4FC</color>
+    <color name="success">#75CE11</color>
+    <color name="warning">#FFB70B</color>
+    <color name="error">#F33951</color>
 
+    <color name="normal">#000000</color>
     <!--Palette-->
     <color name="ucrop_color_black">#000</color>
     <color name="ucrop_color_blaze_orange">#FF6300</color>

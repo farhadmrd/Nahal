@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "com.nahal.developer.family.nahal"
     compileSdk = 34
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.nahal.developer.family.nahal"

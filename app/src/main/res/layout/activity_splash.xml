@@ -10,6 +10,7 @@
     tools:context=".ui.activities.publicActivities.SplashActivity">
 
     <ImageView
+        android:id="@+id/imgLogo"
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_gravity="center"
