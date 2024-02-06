@@ -240,8 +240,8 @@
     <color name="transparent_black_hex_11">#bb000000</color>
     <color name="transparent_black_hex_12">#cc000000</color>
     <!-- primary_dark Transparent -->
-    <color name="transparent_primary_dark_hex_10">#aa2dcc70</color>
-    <color name="transparent_primary_dark_hex_6">#662dcc70</color>
+    <color name="transparent_primary_dark_hex_10">#aa01bf07</color>
+    <color name="transparent_primary_dark_hex_6">#6601bf07</color>
     <color name="transparent_accent_hex_10">#aa10aeae</color>
     <color name="transparent_accent_hex_2">#2210aeae</color>
     <color name="transparent_accent_hex_5">#5510aeae</color>

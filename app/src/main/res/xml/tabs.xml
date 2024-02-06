@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        drawable="@drawable/ic_action_home_black"
+        text="@string/Home" />
+
+    <tab
+        drawable="@drawable/ic_action_repository_black"
+        text="@string/repository" />
+
+    <tab
+        drawable="@drawable/ic_action_search_black"
+        text="@string/search" />
+
+    <tab
+        drawable="@drawable/ic_action_setting_black"
+        text="@string/setting" />
+
+</tabs>

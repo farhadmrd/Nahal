@@ -1,4 +1,4 @@
-package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
+package com.nahal.developer.family.nahal.madules.fm_BottomBar
 /**
  * Copyright (c) 2024 farhad moradi
  * farhadmrd@gmail.com
@@ -20,27 +20,7 @@ package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import android.content.Context
-import com.nahal.developer.family.nahal.madules.fm_Toaster.DefaultToasterType
-import com.nahal.developer.family.nahal.madules.fm_Toaster.Toaster
+interface OnItemSelectedListener {
 
-/**
- * A simple factory to return [DefaultToaster] instance from [DefaultToasterType]. It uses
- * [java.util.EnumMap] to map the [DefaultToasterType] with the [DefaultToaster]. The map is provided
- * using [ToasterMapProvider] which handles the mapping of the enum to the implementation.
- */
-internal object DefaultToasterFactory {
-
-    private val toasterMap = ToasterMapProvider.provide()
-
-    fun create(
-        context: Context,
-        message: CharSequence,
-        duration: Int,
-        toasterType: DefaultToasterType,
-    ): Toaster {
-        val defaultToaster = toasterMap[toasterType]
-            ?: throw IllegalArgumentException("Unknown toaster type.")
-        return defaultToaster.create(context, message, duration)
-    }
+    fun onItemSelect(pos: Int): Boolean
 }

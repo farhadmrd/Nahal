@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
+    android:layoutDirection="rtl"
     tools:context=".ui.activities.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.nahal.developer.family.nahal.madules.fm_BottomBar.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:menu="@menu/main_menu"
+        android:layout_alignParentBottom="true"
+        app:backgroundColor="@color/colorPrimary"
+        app:indicatorColor="@color/colorPrimaryDark"
+        app:indicatorRadius="@dimen/standard_margin_x2"
+        app:cornerRadius="@dimen/standard_margin_x2"
+        app:textColor="@color/fontColorWhite"
+        style="@style/custom_font_style_s"
+        app:badgeColor="@color/toastBackColor"
+        app:iconSize="32dp"
+        app:textSize="12sp"
+        app:sideMargins="@dimen/standard_margin_med"
+        app:itemFontFamily="@font/yekan_n"
+        app:iconTint="@color/colorPrimaryDark"
+        app:iconTintActive="@color/colorPrimary"
+        app:activeItem="0"
+        app:duration="200"/>
+</RelativeLayout>

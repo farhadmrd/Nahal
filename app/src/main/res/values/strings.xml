@@ -2,4 +2,9 @@
     <string name="app_name">خانواده نهال</string>
     <string name="Splash_Wellcome_Message">به جمع نهالی ها خوش آمدید</string>
     <string name="message">پیام</string>
+    <string name="Home">خانه</string>
+    <string name="repository">گنجینه</string>
+    <string name="setting">تنظیمات</string>
+    <string name="search">جستجو</string>
+    <string name="ellipsis">&#8230;</string>
 </resources>

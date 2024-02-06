@@ -1,4 +1,4 @@
-package com.nahal.developer.family.nahal.madules.fm_Toaster
+package com.nahal.developer.family.nahal.madules.fm_BottomBar
 /**
  * Copyright (c) 2024 farhad moradi
  * farhadmrd@gmail.com
@@ -20,21 +20,7 @@ package com.nahal.developer.family.nahal.madules.fm_Toaster
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import android.content.Context
-import android.widget.Toast
+interface OnItemReselectedListener {
 
-fun prepareToast(
-    context: Context,
-    block: ToasterBuilderKtx.() -> Unit
-): Toast {
-    val toaster = prepareToaster(context, block)
-    return Toaster.pop(toaster)
-}
-
-fun prepareToaster(
-    context: Context,
-    block: ToasterBuilderKtx.() -> Unit
-): Toaster {
-    val toastBuilder = ToasterBuilderKtx(context).apply(block)
-    return toastBuilder.prepare()
+    fun onItemReselect(pos: Int)
 }

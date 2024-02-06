@@ -1,4 +1,4 @@
-package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
+package com.nahal.developer.family.nahal.madules.fm_BottomBar.ext
 /**
  * Copyright (c) 2024 farhad moradi
  * farhadmrd@gmail.com
@@ -21,16 +21,8 @@ package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
  * SOFTWARE.
  */
 import android.content.Context
-import com.nahal.developer.family.nahal.madules.fm_Toaster.Toaster
+import kotlin.math.roundToInt
 
-/**
- * This interface provides a [create] method that will be used to generate a
- * default [Toaster] for different scenarios.
- */
-internal interface DefaultToaster {
-    fun create(
-        context: Context,
-        message: CharSequence,
-        duration: Int,
-    ): Toaster
+internal fun Context.d2p(dp: Float): Float {
+    return (dp * resources.displayMetrics.density).roundToInt().toFloat()
 }

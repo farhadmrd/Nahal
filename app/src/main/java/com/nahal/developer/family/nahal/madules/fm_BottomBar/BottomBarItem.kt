@@ -1,4 +1,4 @@
-package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
+package com.nahal.developer.family.nahal.madules.fm_BottomBar
 /**
  * Copyright (c) 2024 farhad moradi
  * farhadmrd@gmail.com
@@ -20,23 +20,13 @@ package com.nahal.developer.family.nahal.madules.fm_Toaster.defaults
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import android.content.Context
-import com.nahal.developer.family.nahal.R
-import com.nahal.developer.family.nahal.madules.fm_Toaster.Toaster
-import com.nahal.developer.family.nahal.madules.fm_Toaster.utils.Colors
+import android.graphics.RectF
+import android.graphics.drawable.Drawable
 
-internal object SuccessToaster : DefaultToaster {
-    override fun create(
-        context: Context,
-        message: CharSequence,
-        duration: Int,
-    ): Toaster {
-        return Toaster.Config(
-            message = message,
-            leftDrawableRes = R.drawable.ic_baseline_check_circle_24,
-            leftDrawableTint = Colors.SUCCESS,
-            stripTint = Colors.SUCCESS,
-            duration = duration,
-        ).make(context)
-    }
-}
+data class BottomBarItem (
+    var title: String,
+    var contentDescription : String,
+    val icon: Drawable,
+    var rect: RectF = RectF(),
+    var alpha: Int
+)
