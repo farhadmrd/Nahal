@@ -92,5 +92,5 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
-//    implementation ("nl.joery.animatedbottombar:library:1.1.0")
+    implementation ("androidx.databinding:databinding-runtime:8.2.2")
 }

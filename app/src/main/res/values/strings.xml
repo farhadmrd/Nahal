@@ -7,4 +7,8 @@
     <string name="setting">تنظیمات</string>
     <string name="search">جستجو</string>
     <string name="ellipsis">&#8230;</string>
+    <string name="loading">در حال بارگزاری...</string>
+    <string name="load_failed">خطا در بارگزاری، مجددا تلاش نمائید</string>
+    <string name="load_end">دیتای جدیدی وجود ندارد</string>
+    <string name="load_complete">برای موارد بیشتر لمس نمائید</string>
 </resources>

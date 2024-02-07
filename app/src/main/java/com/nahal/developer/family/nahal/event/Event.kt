@@ -22,6 +22,7 @@ package com.nahal.developer.family.nahal.event
  */
 import com.android.volley.VolleyError
 import com.nahal.developer.family.nahal.core.UBase
+import com.nahal.developer.family.nahal.madules.fm_Toaster.FMToaster
 
 open class Event : UBase() {
     var app: Event? = null
@@ -36,7 +37,11 @@ open class Event : UBase() {
         open fun ShowErrorForTester(err: Exception, className: String) {
             try {
                 if (ShowErrorForTesterIsOn) {
-
+                    FMToaster.Builder(getContext()!!)
+                        .setDescription(err.message)
+                        .setDuration(FMToaster.LENGTH_LONG)
+                        .setTitle("خطا")
+                        .setStatus(FMToaster.Status.SUCCESS).show()
                 }
             } catch (e: Exception) {
             }
@@ -45,6 +50,11 @@ open class Event : UBase() {
         open fun ShowErrorForTester(err: VolleyError, className: String) {
             try {
                 if (ShowErrorForTesterIsOn) {
+                    FMToaster.Builder(getContext()!!)
+                        .setDescription(err.message)
+                        .setDuration(FMToaster.LENGTH_LONG)
+                        .setTitle("خطا")
+                        .setStatus(FMToaster.Status.SUCCESS).show()
                 }
             } catch (e: Exception) {
             }

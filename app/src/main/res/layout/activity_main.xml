@@ -8,25 +8,100 @@
     android:layoutDirection="rtl"
     tools:context=".ui.activities.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/standard_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/standard_padding"
+            android:text="گنجینه من"
+            android:textColor="@color/fontColorBlack"
+            style="@style/custom_font_style_l"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEmptyListTop"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="#cccccc"
+            android:gravity="center"
+            android:text="تمامی پکیج ها در لیست هستند"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="8"
+            tools:listitem="@layout/list_item_main" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:text="صفحه اصلی"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="8"
+            tools:listitem="@layout/list_item_main" />
+
+        <TextView
+            android:id="@+id/tvEmptyListBottom"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="#cccccc"
+            android:gravity="center"
+            android:text="لیست پکیج های پر کاربرد خالی است"
+            android:textSize="20sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
     <com.nahal.developer.family.nahal.madules.fm_BottomBar.SmoothBottomBar
         android:id="@+id/bottomBar"
+        style="@style/custom_font_style_s"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:menu="@menu/main_menu"
         android:layout_alignParentBottom="true"
+        app:activeItem="0"
         app:backgroundColor="@color/colorPrimary"
-        app:indicatorColor="@color/colorPrimaryDark"
-        app:indicatorRadius="@dimen/standard_margin_x2"
-        app:cornerRadius="@dimen/standard_margin_x2"
-        app:textColor="@color/fontColorWhite"
-        style="@style/custom_font_style_s"
         app:badgeColor="@color/toastBackColor"
+        app:cornerRadius="@dimen/standard_margin_x2"
+        app:duration="200"
         app:iconSize="32dp"
-        app:textSize="12sp"
-        app:sideMargins="@dimen/standard_margin_med"
-        app:itemFontFamily="@font/yekan_n"
         app:iconTint="@color/colorPrimaryDark"
         app:iconTintActive="@color/colorPrimary"
-        app:activeItem="0"
-        app:duration="200"/>
+        app:indicatorColor="@color/colorPrimaryDark"
+        app:indicatorRadius="@dimen/standard_margin_x2"
+        app:itemFontFamily="@font/yekan_n"
+        app:menu="@menu/main_menu"
+        app:sideMargins="@dimen/standard_margin_med"
+        app:textColor="@color/fontColorWhite"
+        app:textSize="12sp" />
 </RelativeLayout>

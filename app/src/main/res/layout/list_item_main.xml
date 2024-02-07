@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvGrid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/standard_margin"
+    android:elevation="10dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="@dimen/standard_margin"
+            android:layout_gravity="center"
+            android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/tvGrid"
+            style="@style/custom_font_style_m"
+            android:layout_width="match_parent"
+            android:padding="@dimen/standard_margin"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/fontColorBlack"
+            android:textStyle="bold"
+            tools:text="A" />
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

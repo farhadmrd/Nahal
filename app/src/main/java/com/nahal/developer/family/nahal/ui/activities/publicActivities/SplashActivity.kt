@@ -1,4 +1,5 @@
 package com.nahal.developer.family.nahal.ui.activities.publicActivities
+
 /**
  * Copyright (c) 2024 farhad moradi
  * farhadmrd@gmail.com
@@ -24,6 +25,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.Animation
+import android.widget.ImageView
 import com.nahal.developer.family.nahal.R
 import com.nahal.developer.family.nahal.core.UAppCompatActivity
 import com.nahal.developer.family.nahal.databinding.ActivitySplashBinding
@@ -34,16 +36,21 @@ import com.nahal.developer.family.nahal.ui.activities.MainActivity
 
 class SplashActivity : UAppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
-
+    //    private lateinit var binding: ActivitySplashBinding
+    lateinit var imgLogo: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        Handler().postDelayed({
-            whatToDoNext()
-        }, 2000)
-//        usingSplashClass()
+//        binding = ActivitySplashBinding.inflate(layoutInflater)
+//        Handler().postDelayed({
+//            whatToDoNext()
+//        }, 2000)
+        InitUi()
+        usingSplashClass()
+    }
+
+    private fun InitUi() {
+        imgLogo=findViewById(R.id.imgLogo)
     }
 
     private fun usingSplashClass() {
@@ -61,7 +68,7 @@ class SplashActivity : UAppCompatActivity() {
                 override fun onStartAnim() {
                 }
             }
-        ).startSequentialAnimation(view = binding.imgLogo)
+        ).startSequentialAnimation(view = imgLogo)
     }
 
     private fun getAnimList(): ArrayList<Animation> {
