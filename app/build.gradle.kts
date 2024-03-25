@@ -94,4 +94,5 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     implementation ("androidx.databinding:databinding-runtime:8.3.1")
     implementation ("org.apache.poi:poi:4.0.1")
+    implementation ("de.raphaelebner:roomdatabasebackup:1.0.0-beta14")
 }

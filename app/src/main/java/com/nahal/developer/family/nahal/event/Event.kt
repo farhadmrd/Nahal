@@ -59,6 +59,15 @@ open class Event : UBase() {
             } catch (e: Exception) {
             }
         }
+
+        open fun getCurrentUserId(): Long {
+            return try {
+                0
+            } catch (e: java.lang.Exception) {
+                ShowErrorForTester(e, "Event")
+                0
+            }
+        }
     }
 
 }

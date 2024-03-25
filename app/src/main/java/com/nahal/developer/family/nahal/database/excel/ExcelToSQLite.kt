@@ -1,201 +1,168 @@
-package com.nahal.developer.family.nahal.database.excel;
+package com.nahal.developer.family.nahal.database.excel
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.os.Handler
+import android.os.Looper
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.CellType
+import org.apache.poi.ss.usermodel.Sheet
+import java.io.File
+import java.io.FileInputStream
+import java.io.InputStream
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+class ExcelToSQLite {
+    private var mContext: Context
+    private var database: SQLiteDatabase? = null
+    private var mDbName: String
+    private var dropTable = false
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class ExcelToSQLite {
-
-    private static Handler handler = new Handler(Looper.getMainLooper());
-
-    private Context mContext;
-    private SQLiteDatabase database;
-    private String mDbName;
-    private boolean dropTable = false;
-
-    public ExcelToSQLite(Context context, String dbName) {
-        mContext = context;
-        mDbName = dbName;
+    constructor(context: Context, dbName: String) {
+        mContext = context
+        mDbName = dbName
         try {
-            database = SQLiteDatabase.openOrCreateDatabase(mContext.getDatabasePath(mDbName).getAbsolutePath(), null);
-        } catch (Exception e) {
-            e.printStackTrace();
+            database = SQLiteDatabase.openOrCreateDatabase(
+                mContext.getDatabasePath(mDbName).absolutePath,
+                null
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
-    public ExcelToSQLite(Context context, String dbName, boolean dropTable) {
-        mContext = context;
-        mDbName = dbName;
-        this.dropTable = dropTable;
+    constructor(context: Context, dbName: String, dropTable: Boolean) {
+        mContext = context
+        mDbName = dbName
+        this.dropTable = dropTable
         try {
-            database = SQLiteDatabase.openOrCreateDatabase(mContext.getDatabasePath(mDbName).getAbsolutePath(), null);
-        } catch (Exception e) {
-            e.printStackTrace();
+            database = SQLiteDatabase.openOrCreateDatabase(
+                mContext.getDatabasePath(mDbName).absolutePath,
+                null
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
-    public void importFromAsset(final String assetFileName, final ImportListener listener) {
-        if (listener != null) {
-            listener.onStart();
-        }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    working(mContext.getAssets().open(assetFileName));
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onCompleted(mDbName);
-                            }
-                        });
-                    }
-                } catch (final Exception e) {
-                    if (database != null && database.isOpen()) {
-                        database.close();
-                    }
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onError(e);
-                            }
-                        });
-                    }
+    fun importFromAsset(assetFileName: String?, listener: ImportListener?) {
+        listener?.onStart()
+        Thread {
+            try {
+                working(mContext.assets.open(assetFileName!!))
+                if (listener != null) {
+                    handler.post { listener.onCompleted(mDbName) }
+                }
+            } catch (e: Exception) {
+                if (database != null && database!!.isOpen) {
+                    database!!.close()
+                }
+                if (listener != null) {
+                    handler.post { listener.onError(e) }
                 }
             }
-        }).start();
+        }.start()
     }
 
-    public void importFromFile(String filePath, ImportListener listener) {
-        importFromFile(new File(filePath), listener);
+    fun importFromFile(filePath: String?, listener: ImportListener?) {
+        importFromFile(File(filePath), listener)
     }
 
-    private void importFromFile(final File file, final ImportListener listener) {
-        if (listener != null) {
-            listener.onStart();
-        }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    working(new FileInputStream(file));
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onCompleted(mDbName);
-                            }
-                        });
-                    }
-                } catch (final Exception e) {
-                    if (database != null && database.isOpen()) {
-                        database.close();
-                    }
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onError(e);
-                            }
-                        });
-                    }
+    private fun importFromFile(file: File, listener: ImportListener?) {
+        listener?.onStart()
+        Thread {
+            try {
+                working(FileInputStream(file))
+                if (listener != null) {
+                    handler.post { listener.onCompleted(mDbName) }
+                }
+            } catch (e: Exception) {
+                if (database != null && database!!.isOpen) {
+                    database!!.close()
+                }
+                if (listener != null) {
+                    handler.post { listener.onError(e) }
                 }
             }
-        }).start();
-
+        }.start()
     }
 
-    private void working(InputStream stream) throws Exception {
-        HSSFWorkbook workbook = new HSSFWorkbook(stream);
-        int sheetNumber = workbook.getNumberOfSheets();
-        for (int i = 0; i < sheetNumber; i++) {
-            createTable(workbook.getSheetAt(i));
+    @Throws(Exception::class)
+    private fun working(stream: InputStream) {
+        val workbook = HSSFWorkbook(stream)
+        val sheetNumber = workbook.numberOfSheets
+        for (i in 0 until sheetNumber) {
+            createTable(workbook.getSheetAt(i))
         }
-        database.close();
+        database!!.close()
     }
 
-    private void createTable(Sheet sheet) {
-        Cursor cursor = null;
+    private fun createTable(sheet: Sheet) {
+        var cursor: Cursor? = null
         try {
-            StringBuilder createTableSql = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-            createTableSql.append(sheet.getSheetName());
-            createTableSql.append("(");
-            Iterator<Row> rit = sheet.rowIterator();
-            Row rowHeader = rit.next();
-            List<String> columns = new ArrayList<>();
-            for (int i = 0; i < rowHeader.getPhysicalNumberOfCells(); i++) {
-                createTableSql.append(rowHeader.getCell(i).getStringCellValue());
-                if (i == rowHeader.getPhysicalNumberOfCells() - 1) {
-                    createTableSql.append(" TEXT");
+            val createTableSql = StringBuilder("CREATE TABLE IF NOT EXISTS ")
+            createTableSql.append(sheet.sheetName)
+            createTableSql.append("(")
+            val rit = sheet.rowIterator()
+            val rowHeader = rit.next()
+            val columns: MutableList<String> = ArrayList()
+            for (i in 0 until rowHeader.physicalNumberOfCells) {
+                createTableSql.append(rowHeader.getCell(i).stringCellValue)
+                if (i == rowHeader.physicalNumberOfCells - 1) {
+                    createTableSql.append(" TEXT")
                 } else {
-                    createTableSql.append(" TEXT,");
+                    createTableSql.append(" TEXT,")
                 }
-                columns.add(rowHeader.getCell(i).getStringCellValue());
+                columns.add(rowHeader.getCell(i).stringCellValue)
             }
-            createTableSql.append(")");
-
-            if (dropTable)
-                database.execSQL("DROP TABLE IF EXISTS " + sheet.getSheetName());
-
-            database.execSQL(createTableSql.toString());
-
-            for (String column : columns) {
-                cursor = database.rawQuery("SELECT * FROM " + sheet.getSheetName(), null);
+            createTableSql.append(")")
+            if (dropTable) database!!.execSQL("DROP TABLE IF EXISTS " + sheet.sheetName)
+            database!!.execSQL(createTableSql.toString())
+            for (column in columns) {
+                cursor = database!!.rawQuery("SELECT * FROM " + sheet.sheetName, null)
                 // grab cursor for all data
-                int deleteStateColumnIndex = cursor.getColumnIndex(column);  // see if the column is there
+                val deleteStateColumnIndex =
+                    cursor.getColumnIndex(column) // see if the column is there
                 if (deleteStateColumnIndex < 0) {
-                    String type = "TEXT";
+                    val type = "TEXT"
                     // missing_column not there - add it
-                    database.execSQL("ALTER TABLE " + sheet.getSheetName()
-                            + " ADD COLUMN " + column + " " + type + " NULL;");
+                    database!!.execSQL(
+                        "ALTER TABLE " + sheet.sheetName
+                                + " ADD COLUMN " + column + " " + type + " NULL;"
+                    )
                 }
             }
-
             while (rit.hasNext()) {
-                Row row = rit.next();
-                ContentValues values = new ContentValues();
-                for (int n = 0; n < row.getPhysicalNumberOfCells(); n++) {
-                    if (row.getCell(n).getCellType() == CellType.NUMERIC) {
-                        values.put(columns.get(n), row.getCell(n).getNumericCellValue());
+                val row = rit.next()
+                val values = ContentValues()
+                for (n in 0 until row.physicalNumberOfCells) {
+                    if (row.getCell(n).cellType == CellType.NUMERIC) {
+                        values.put(columns[n], row.getCell(n).numericCellValue)
                     } else {
-                        values.put(columns.get(n), row.getCell(n).getStringCellValue());
+                        values.put(columns[n], row.getCell(n).stringCellValue)
                     }
                 }
-                long result = database.insertWithOnConflict(sheet.getSheetName(),
-                        null, values, SQLiteDatabase.CONFLICT_IGNORE);
+                val result = database!!.insertWithOnConflict(
+                    sheet.sheetName,
+                    null, values, SQLiteDatabase.CONFLICT_IGNORE
+                )
                 if (result < 0) {
-                    throw new RuntimeException("Insert value failed!");
+                    throw RuntimeException("Insert value failed!")
                 }
             }
         } finally {
-            if (cursor != null)
-                cursor.close();
+            cursor?.close()
         }
     }
 
-    public interface ImportListener {
-        void onStart();
-
-        void onCompleted(String dbName);
-
-        void onError(Exception e);
+    interface ImportListener {
+        fun onStart()
+        fun onCompleted(dbName: String?)
+        fun onError(e: Exception?)
     }
 
+    companion object {
+        private val handler = Handler(Looper.getMainLooper())
+    }
 }

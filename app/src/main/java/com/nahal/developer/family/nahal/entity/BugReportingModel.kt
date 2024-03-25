@@ -1,10 +1,6 @@
-package com.nahal.developer.family.nahal.core
+package com.nahal.developer.family.nahal.entity
 
-import com.nahal.developer.family.nahal.database.entity.UserModel
-import com.nahal.developer.family.nahal.event.Event.Companion.ShowErrorForTester
-
-/*
- * Copyright (c) 2024 farhad moradi
+/** Copyright (c) 2020 farhad moradi
  * farhadmrd@gmail.com
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,10 +8,10 @@ import com.nahal.developer.family.nahal.event.Event.Companion.ShowErrorForTester
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * <p>
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * <p>
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,26 +20,19 @@ import com.nahal.developer.family.nahal.event.Event.Companion.ShowErrorForTester
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-open class G : UBase() {
-    override fun onCreate() {
-        try {
-            super.onCreate()
-            app = this
-        } catch (e: Exception) {
-            ShowErrorForTester(e, javaClass.name)
-        }
-    }
+class BugReportingModel {
+    var id: Int? = null
+    var title: String? = null
+    var summ: String? = null
+    var selectedError: String? = null
+    var dateOfSubmit: String? = null
+    var personID: Long? = null
+    var productId: Long? = null
 
-    companion object {
-        val currentUser: UserModel? = null
-
-
-        const val TAG = "FMR"
-        const val URL = "http://192.168.1.101:5169/api/"
-
-        //    public static final String URL = "http://192.168.1.101/AmadaiMarket.WebApi/api/Customer/";
-        var app: G? = null
-        const val DB_VERSION = 1
-
-    }
+    /// <summary>
+    /// Type==1 گزارش اشکال محصول
+    /// Type==2 گزارش اشکال اپلیکیشن
+    /// </summary>
+    var type: Int? = null
+    var crashModel: CrashModel? = null
 }

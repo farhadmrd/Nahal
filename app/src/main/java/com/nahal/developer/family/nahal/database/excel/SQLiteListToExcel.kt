@@ -1,55 +1,35 @@
-package com.nahal.developer.family.nahal.database.excel;
+package com.nahal.developer.family.nahal.database.excel
 
-import static android.content.ContentValues.TAG;
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import org.apache.poi.hssf.usermodel.HSSFClientAnchor
+import org.apache.poi.hssf.usermodel.HSSFRichTextString
+import org.apache.poi.hssf.usermodel.HSSFSheet
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.CellStyle
+import org.apache.poi.ss.usermodel.ClientAnchor
+import org.apache.poi.ss.usermodel.HorizontalAlignment
+import org.apache.poi.ss.usermodel.VerticalAlignment
+import java.io.File
+import java.io.FileOutputStream
 
-import android.content.Context;
-import android.database.Cursor;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
-import org.apache.poi.hssf.usermodel.HSSFPatriarch;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.ClientAnchor;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public class SQLiteListToExcel {
-
-    private static Handler handler = new Handler(Looper.getMainLooper());
-
-    private String mExportPath;
-    private HSSFWorkbook workbook;
-
-    private List<String> mExcludeColumns = null;
-    private HashMap<String, String> mPrettyNameMapping = null;
-    private ExportCustomFormatter mCustomFormatter = null;
-
-
-    public SQLiteListToExcel(Context context, String exportPath) {
-        mExportPath = exportPath;
-
-    }
+class SQLiteListToExcel(context: Context?, private val mExportPath: String) {
+    private var workbook: HSSFWorkbook? = null
+    private var mExcludeColumns: List<String?>? = null
+    private var mPrettyNameMapping: HashMap<String?, String>? = null
+    private var mCustomFormatter: ExportCustomFormatter? = null
 
     /**
      * Set the exclude columns list
      *
      * @param excludeColumns
      */
-    public void setExcludeColumns(List<String> excludeColumns) {
-        mExcludeColumns = excludeColumns;
+    fun setExcludeColumns(excludeColumns: List<String?>?) {
+        mExcludeColumns = excludeColumns
     }
 
     /**
@@ -57,8 +37,8 @@ public class SQLiteListToExcel {
      *
      * @param prettyNameMapping
      */
-    public void setPrettyNameMapping(HashMap<String, String> prettyNameMapping) {
-        mPrettyNameMapping = prettyNameMapping;
+    fun setPrettyNameMapping(prettyNameMapping: HashMap<String?, String>?) {
+        mPrettyNameMapping = prettyNameMapping
     }
 
     /**
@@ -66,145 +46,124 @@ public class SQLiteListToExcel {
      *
      * @param customFormatter
      */
-    public void setCustomFormatter(ExportCustomFormatter customFormatter) {
-        mCustomFormatter = customFormatter;
+    fun setCustomFormatter(customFormatter: ExportCustomFormatter?) {
+        mCustomFormatter = customFormatter
     }
 
-    private void exportTables(Cursor cursor, final String fileName) throws Exception {
+    @Throws(Exception::class)
+    private fun exportTables(cursor: Cursor, fileName: String) {
         try {
-            workbook = new HSSFWorkbook();
-            HSSFSheet sheet = workbook.createSheet("Sheet1");
-            createSheet(cursor, sheet);
-
-
-            File file = new File(mExportPath, fileName);
-            FileOutputStream fos = new FileOutputStream(file);
-            workbook.write(fos);
-            fos.flush();
-            fos.close();
-            workbook.close();
-        }catch (Exception e) {
-
+            workbook = HSSFWorkbook()
+            val sheet = workbook!!.createSheet("Sheet1")
+            createSheet(cursor, sheet)
+            val file = File(mExportPath, fileName)
+            val fos = FileOutputStream(file)
+            workbook!!.write(fos)
+            fos.flush()
+            fos.close()
+            workbook!!.close()
+        } catch (e: Exception) {
         }
-
     }
 
-    public void exportTable(final Cursor cursor, final String fileName, ExportListener listener) {
+    fun exportTable(cursor: Cursor, fileName: String, listener: ExportListener?) {
         try {
-            startExportTables(cursor, fileName, listener);
-        } catch (Exception e) {
-            Log.e(TAG, "exportTable: " + e.getMessage());
+            startExportTables(cursor, fileName, listener)
+        } catch (e: Exception) {
+            Log.e(ContentValues.TAG, "exportTable: " + e.message)
         }
-
     }
 
-    private void startExportTables(final Cursor cursor, final String fileName, final ExportListener listener) {
-        if (listener != null) {
-            listener.onStart();
-        }
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    exportTables(cursor, fileName);
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onCompleted(mExportPath + fileName);
-                            }
-                        });
-                    }
-                } catch (final Exception e) {
-                    if (listener != null)
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onError(e);
-                            }
-                        });
+    private fun startExportTables(cursor: Cursor, fileName: String, listener: ExportListener?) {
+        listener?.onStart()
+        Thread {
+            try {
+                exportTables(cursor, fileName)
+                if (listener != null) {
+                    handler.post { listener.onCompleted(mExportPath + fileName) }
                 }
+            } catch (e: Exception) {
+                if (listener != null) handler.post { listener.onError(e) }
             }
-        }).start();
+        }.start()
     }
 
-    private void createSheet(Cursor cursor, HSSFSheet sheet) {
+    private fun createSheet(cursor: Cursor, sheet: HSSFSheet) {
         try {
-            HSSFRow rowA = sheet.createRow(0);
-            ArrayList<String> columns = new ArrayList<>();
-
-            columns.add("ID");
-            columns.add("SurveyResponseID");
-            columns.add("FullName");
-            columns.add("Phone");
-            columns.add("Staff");
-            columns.add("Question");
-            columns.add("AnswerType");
-            columns.add("Answer");
-            columns.add("FA_CREATE_DATE");
-            columns.add("IS_ACTIVE");
-
-            int cellIndex = 0;
-            for (int i = 0; i < columns.size(); i++) {
-                String columnName = prettyNameMapping("" + columns.get(i));
+            val rowA = sheet.createRow(0)
+            val columns = ArrayList<String>()
+            columns.add("ID")
+            columns.add("SurveyResponseID")
+            columns.add("FullName")
+            columns.add("Phone")
+            columns.add("Staff")
+            columns.add("Question")
+            columns.add("AnswerType")
+            columns.add("Answer")
+            columns.add("FA_CREATE_DATE")
+            columns.add("IS_ACTIVE")
+            var cellIndex = 0
+            for (i in columns.indices) {
+                val columnName = prettyNameMapping("" + columns[i])
                 if (!excludeColumn(columnName)) {
-                    HSSFCell cellA = rowA.createCell(cellIndex);
-                    CellStyle cellStyle=cellA.getCellStyle();
-                    cellStyle.setAlignment(HorizontalAlignment.CENTER);
-                    cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-                    cellA.setCellStyle(cellStyle);
-                    cellA.setCellValue(new HSSFRichTextString(columnName));
-                    cellIndex++;
+                    val cellA = rowA.createCell(cellIndex)
+                    val cellStyle: CellStyle = cellA.cellStyle
+                    cellStyle.alignment = HorizontalAlignment.CENTER
+                    cellStyle.verticalAlignment = VerticalAlignment.CENTER
+                    cellA.setCellStyle(cellStyle)
+                    cellA.setCellValue(HSSFRichTextString(columnName))
+                    cellIndex++
                 }
             }
-            insertItemToSheet(cursor, sheet, columns);
-        }catch (Exception e) {
-
+            insertItemToSheet(cursor, sheet, columns)
+        } catch (e: Exception) {
         }
-
     }
 
-    private void insertItemToSheet(Cursor cursor, HSSFSheet sheet, ArrayList<String> columns) {
+    private fun insertItemToSheet(cursor: Cursor, sheet: HSSFSheet, columns: ArrayList<String>) {
         try {
-            HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-            cursor.moveToFirst();
-            int n = 1;
-            while (!cursor.isAfterLast()) {
-                HSSFRow rowA = sheet.createRow(n);
-                int cellIndex = 0;
-                for (int j = 0; j < columns.size(); j++) {
-                    String columnName = "" + columns.get(j);
+            val patriarch = sheet.createDrawingPatriarch()
+            cursor.moveToFirst()
+            var n = 1
+            while (!cursor.isAfterLast) {
+                val rowA = sheet.createRow(n)
+                var cellIndex = 0
+                for (j in columns.indices) {
+                    val columnName = "" + columns[j]
                     if (!excludeColumn(columnName)) {
-                        HSSFCell cellA = rowA.createCell(cellIndex);
+                        val cellA = rowA.createCell(cellIndex)
                         if (cursor.getType(j) == Cursor.FIELD_TYPE_BLOB) {
-                            HSSFClientAnchor anchor = new HSSFClientAnchor(0, 0, 0, 0, (short) cellIndex,
-                                    n, (short) (cellIndex + 1), n + 1);
-                            anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE);
-                            patriarch.createPicture(anchor, workbook.addPicture(cursor.getBlob(j),
-                                    HSSFWorkbook.PICTURE_TYPE_JPEG));
+                            val anchor = HSSFClientAnchor(
+                                0, 0, 0, 0, cellIndex.toShort(),
+                                n, (cellIndex + 1).toShort(), n + 1
+                            )
+                            anchor.anchorType = ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE
+                            patriarch.createPicture(
+                                anchor, workbook!!.addPicture(
+                                    cursor.getBlob(j),
+                                    HSSFWorkbook.PICTURE_TYPE_JPEG
+                                )
+                            )
                         } else {
-                            String value = cursor.getString(j);
+                            var value = cursor.getString(j)
                             if (null != mCustomFormatter) {
-                                value = mCustomFormatter.process(columnName, value);
+                                value = mCustomFormatter!!.process(columnName, value)
                             }
-                            CellStyle cellStyle=cellA.getCellStyle();
-                            cellStyle.setAlignment(HorizontalAlignment.CENTER);
-                            cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-                            cellA.setCellStyle(cellStyle);
-                            cellA.setCellValue(new HSSFRichTextString(value));
+                            val cellStyle: CellStyle = cellA.cellStyle
+                            cellStyle.alignment = HorizontalAlignment.CENTER
+                            cellStyle.verticalAlignment = VerticalAlignment.CENTER
+                            cellA.setCellStyle(cellStyle)
+                            cellA.setCellValue(HSSFRichTextString(value))
                         }
-                        cellIndex++;
+                        cellIndex++
                     }
                 }
-                n++;
-                cursor.moveToNext();
+                n++
+                cursor.moveToNext()
             }
-            cursor.close();
-        }catch (Exception e) {
-
+            cursor.close()
+        } catch (e: Exception) {
         }
-
     }
 
     /**
@@ -213,13 +172,11 @@ public class SQLiteListToExcel {
      * @param column
      * @return boolean
      */
-    private boolean excludeColumn(String column) {
-        boolean exclude = false;
-        if (null != mExcludeColumns) {
-            return mExcludeColumns.contains(column);
-        }
-
-        return exclude;
+    private fun excludeColumn(column: String?): Boolean {
+        val exclude = false
+        return if (null != mExcludeColumns) {
+            mExcludeColumns!!.contains(column)
+        } else exclude
     }
 
     /**
@@ -228,27 +185,30 @@ public class SQLiteListToExcel {
      * @param name
      * @return
      */
-    private String prettyNameMapping(String name) {
+    private fun prettyNameMapping(name: String): String? {
+        var name: String? = name
         if (null != mPrettyNameMapping) {
-            if (mPrettyNameMapping.containsKey(name)) {
-                name = mPrettyNameMapping.get(name);
+            if (mPrettyNameMapping!!.containsKey(name)) {
+                name = mPrettyNameMapping!![name]
             }
         }
-        return name;
+        return name
     }
 
-    public interface ExportListener {
-        void onStart();
-
-        void onCompleted(String filePath);
-
-        void onError(Exception e);
+    interface ExportListener {
+        fun onStart()
+        fun onCompleted(filePath: String?)
+        fun onError(e: Exception?)
     }
 
     /**
      * Interface class for the custom formatter
      */
-    public interface ExportCustomFormatter {
-        String process(String columnName, String value);
+    interface ExportCustomFormatter {
+        fun process(columnName: String?, value: String?): String?
+    }
+
+    companion object {
+        private val handler = Handler(Looper.getMainLooper())
     }
 }

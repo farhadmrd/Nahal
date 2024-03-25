@@ -1,49 +1,39 @@
-package com.nahal.developer.family.nahal.database.excel;
+package com.nahal.developer.family.nahal.database.excel
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.os.Environment
+import android.os.Handler
+import android.os.Looper
+import org.apache.poi.hssf.usermodel.HSSFClientAnchor
+import org.apache.poi.hssf.usermodel.HSSFRichTextString
+import org.apache.poi.hssf.usermodel.HSSFSheet
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.ClientAnchor
+import java.io.File
+import java.io.FileOutputStream
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
-import org.apache.poi.hssf.usermodel.HSSFPatriarch;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.ClientAnchor;
+class SQLiteToExcel @JvmOverloads constructor(
+    context: Context,
+    dbName: String?,
+    private val mExportPath: String = Environment.getExternalStorageDirectory()
+        .toString() + File.separator
+) {
+    private var database: SQLiteDatabase? = null
+    private var workbook: HSSFWorkbook? = null
+    private var mExcludeColumns: List<String?>? = null
+    private var mPrettyNameMapping: HashMap<String?, String>? = null
+    private var mCustomFormatter: ExportCustomFormatter? = null
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public class SQLiteToExcel {
-
-    private static Handler handler = new Handler(Looper.getMainLooper());
-
-    private SQLiteDatabase database;
-    private String mExportPath;
-    private HSSFWorkbook workbook;
-
-    private List<String> mExcludeColumns = null;
-    private HashMap<String, String> mPrettyNameMapping = null;
-    private ExportCustomFormatter mCustomFormatter = null;
-
-    public SQLiteToExcel(Context context, String dbName) {
-        this(context, dbName, Environment.getExternalStorageDirectory().toString() + File.separator);
-    }
-
-    public SQLiteToExcel(Context context, String dbName, String exportPath) {
-        mExportPath = exportPath;
+    init {
         try {
-            database = SQLiteDatabase.openOrCreateDatabase(context.getDatabasePath(dbName).getAbsolutePath(), null);
-        } catch (Exception e) {
-            e.printStackTrace();
+            database = SQLiteDatabase.openOrCreateDatabase(
+                context.getDatabasePath(dbName).absolutePath,
+                null
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -52,8 +42,8 @@ public class SQLiteToExcel {
      *
      * @param excludeColumns
      */
-    public void setExcludeColumns(List<String> excludeColumns) {
-        mExcludeColumns = excludeColumns;
+    fun setExcludeColumns(excludeColumns: List<String?>?) {
+        mExcludeColumns = excludeColumns
     }
 
     /**
@@ -61,8 +51,8 @@ public class SQLiteToExcel {
      *
      * @param prettyNameMapping
      */
-    public void setPrettyNameMapping(HashMap<String, String> prettyNameMapping) {
-        mPrettyNameMapping = prettyNameMapping;
+    fun setPrettyNameMapping(prettyNameMapping: HashMap<String?, String>?) {
+        mPrettyNameMapping = prettyNameMapping
     }
 
     /**
@@ -70,143 +60,145 @@ public class SQLiteToExcel {
      *
      * @param customFormatter
      */
-    public void setCustomFormatter(ExportCustomFormatter customFormatter) {
-        mCustomFormatter = customFormatter;
+    fun setCustomFormatter(customFormatter: ExportCustomFormatter?) {
+        mCustomFormatter = customFormatter
     }
 
-    private ArrayList<String> getAllTables() {
-        ArrayList<String> tables = new ArrayList<>();
-        Cursor cursor = database.rawQuery("select name from sqlite_master where type='table' order by name", null);
-        while (cursor.moveToNext()) {
-            tables.add(cursor.getString(0));
+    private val allTables: ArrayList<String>
+        private get() {
+            val tables = ArrayList<String>()
+            val cursor = database!!.rawQuery(
+                "select name from sqlite_master where type='table' order by name",
+                null
+            )
+            while (cursor.moveToNext()) {
+                tables.add(cursor.getString(0))
+            }
+            cursor.close()
+            return tables
         }
-        cursor.close();
-        return tables;
-    }
 
-    private ArrayList<String> getColumns(String table) {
-        ArrayList<String> columns = new ArrayList<>();
-        Cursor cursor = database.rawQuery("PRAGMA table_info(" + table + ")", null);
+    private fun getColumns(table: String): ArrayList<String> {
+        val columns = ArrayList<String>()
+        val cursor = database!!.rawQuery("PRAGMA table_info($table)", null)
         while (cursor.moveToNext()) {
-            columns.add(cursor.getString(1));
+            columns.add(cursor.getString(1))
         }
-        cursor.close();
-        return columns;
+        cursor.close()
+        return columns
     }
 
-
-
-    private void exportTables(List<String> tables, final String fileName) throws Exception {
-        workbook = new HSSFWorkbook();
-        for (int i = 0; i < tables.size(); i++) {
-            if (!tables.get(i).equals("android_metadata")) {
-                HSSFSheet sheet = workbook.createSheet(prettyNameMapping(tables.get(i)));
-                createSheet(tables.get(i), sheet);
+    @Throws(Exception::class)
+    private fun exportTables(tables: List<String>, fileName: String) {
+        workbook = HSSFWorkbook()
+        for (i in tables.indices) {
+            if (tables[i] != "android_metadata") {
+                val sheet = workbook!!.createSheet(prettyNameMapping(tables[i]))
+                createSheet(tables[i], sheet)
             }
         }
-        File file = new File(mExportPath, fileName);
-        FileOutputStream fos = new FileOutputStream(file);
-        workbook.write(fos);
-        fos.flush();
-        fos.close();
-        workbook.close();
-        database.close();
+        val file = File(mExportPath, fileName)
+        val fos = FileOutputStream(file)
+        workbook!!.write(fos)
+        fos.flush()
+        fos.close()
+        workbook!!.close()
+        database!!.close()
     }
 
-    public void exportSingleTable(final String table, final String fileName, ExportListener listener) {
-        List<String> tables = new ArrayList<>();
-        tables.add(table);
-        startExportTables(tables, fileName, listener);
+    fun exportSingleTable(table: String, fileName: String, listener: ExportListener?) {
+        val tables: MutableList<String> = ArrayList()
+        tables.add(table)
+        startExportTables(tables, fileName, listener)
     }
 
-    public void exportSpecificTables(final List<String> tables, String fileName, ExportListener listener) {
-        startExportTables(tables, fileName, listener);
+    fun exportSpecificTables(tables: List<String>, fileName: String, listener: ExportListener?) {
+        startExportTables(tables, fileName, listener)
     }
 
-    public void exportAllTables(final String fileName, ExportListener listener) {
-        ArrayList<String> tables = getAllTables();
-        startExportTables(tables, fileName, listener);
+    fun exportAllTables(fileName: String, listener: ExportListener?) {
+        val tables = allTables
+        startExportTables(tables, fileName, listener)
     }
 
-    private void startExportTables(final List<String> tables, final String fileName, final ExportListener listener) {
-        if (listener != null) {
-            listener.onStart();
-        }
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    exportTables(tables, fileName);
-                    if (listener != null) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onCompleted(mExportPath + fileName);
-                            }
-                        });
-                    }
-                } catch (final Exception e) {
-                    if (database != null && database.isOpen()) {
-                        database.close();
-                    }
-                    if (listener != null)
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onError(e);
-                            }
-                        });
+    private fun startExportTables(
+        tables: List<String>,
+        fileName: String,
+        listener: ExportListener?
+    ) {
+        listener?.onStart()
+        Thread {
+            try {
+                exportTables(tables, fileName)
+                if (listener != null) {
+                    handler.post { listener.onCompleted(mExportPath + fileName) }
                 }
+            } catch (e: Exception) {
+                if (database != null && database!!.isOpen()) {
+                    database!!.close()
+                }
+                if (listener != null) handler.post { listener.onError(e) }
             }
-        }).start();
+        }.start()
     }
 
-    private void createSheet(String table, HSSFSheet sheet) {
-        HSSFRow rowA = sheet.createRow(0);
-        ArrayList<String> columns = getColumns(table);
-        int cellIndex = 0;
-        for (int i = 0; i < columns.size(); i++) {
-            String columnName = prettyNameMapping("" + columns.get(i));
+    private fun createSheet(table: String, sheet: HSSFSheet) {
+        val rowA = sheet.createRow(0)
+        val columns = getColumns(table)
+        var cellIndex = 0
+        for (i in columns.indices) {
+            val columnName = prettyNameMapping("" + columns[i])
             if (!excludeColumn(columnName)) {
-                HSSFCell cellA = rowA.createCell(cellIndex);
-                cellA.setCellValue(new HSSFRichTextString(columnName));
-                cellIndex++;
+                val cellA = rowA.createCell(cellIndex)
+                cellA.setCellValue(HSSFRichTextString(columnName))
+                cellIndex++
             }
         }
-        insertItemToSheet(table, sheet, columns);
+        insertItemToSheet(table, sheet, columns)
     }
 
-    private void insertItemToSheet(String table, HSSFSheet sheet, ArrayList<String> columns) {
-        HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-        Cursor cursor = database.rawQuery("select * from " + table, null);
-        cursor.moveToFirst();
-        int n = 1;
-        while (!cursor.isAfterLast()) {
-            HSSFRow rowA = sheet.createRow(n);
-            int cellIndex = 0;
-            for (int j = 0; j < columns.size(); j++) {
-                String columnName = "" + columns.get(j);
+    private fun insertItemToSheet(table: String, sheet: HSSFSheet, columns: ArrayList<String>) {
+        val patriarch = sheet.createDrawingPatriarch()
+        val cursor = database!!.rawQuery("select * from $table", null)
+        cursor.moveToFirst()
+        var n = 1
+        while (!cursor.isAfterLast) {
+            val rowA = sheet.createRow(n)
+            var cellIndex = 0
+            for (j in columns.indices) {
+                val columnName = "" + columns[j]
                 if (!excludeColumn(columnName)) {
-                    HSSFCell cellA = rowA.createCell(cellIndex);
+                    val cellA = rowA.createCell(cellIndex)
                     if (cursor.getType(j) == Cursor.FIELD_TYPE_BLOB) {
-                        HSSFClientAnchor anchor = new HSSFClientAnchor(0, 0, 0, 0, (short) cellIndex, n, (short) (cellIndex + 1), n + 1);
-                        anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE);
-                        patriarch.createPicture(anchor, workbook.addPicture(cursor.getBlob(j), HSSFWorkbook.PICTURE_TYPE_JPEG));
+                        val anchor = HSSFClientAnchor(
+                            0,
+                            0,
+                            0,
+                            0,
+                            cellIndex.toShort(),
+                            n,
+                            (cellIndex + 1).toShort(),
+                            n + 1
+                        )
+                        anchor.anchorType = ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE
+                        patriarch.createPicture(
+                            anchor,
+                            workbook!!.addPicture(cursor.getBlob(j), HSSFWorkbook.PICTURE_TYPE_JPEG)
+                        )
                     } else {
-                        String value = cursor.getString(j);
+                        var value = cursor.getString(j)
                         if (null != mCustomFormatter) {
-                            value = mCustomFormatter.process(columnName, value);
+                            value = mCustomFormatter!!.process(columnName, value)
                         }
-                        cellA.setCellValue(new HSSFRichTextString(value));
+                        cellA.setCellValue(HSSFRichTextString(value))
                     }
-                    cellIndex++;
+                    cellIndex++
                 }
             }
-            n++;
-            cursor.moveToNext();
+            n++
+            cursor.moveToNext()
         }
-        cursor.close();
+        cursor.close()
     }
 
     /**
@@ -215,13 +207,11 @@ public class SQLiteToExcel {
      * @param column
      * @return boolean
      */
-    private boolean excludeColumn(String column) {
-        boolean exclude = false;
-        if (null != mExcludeColumns) {
-            return mExcludeColumns.contains(column);
-        }
-
-        return exclude;
+    private fun excludeColumn(column: String?): Boolean {
+        val exclude = false
+        return if (null != mExcludeColumns) {
+            mExcludeColumns!!.contains(column)
+        } else exclude
     }
 
     /**
@@ -230,27 +220,30 @@ public class SQLiteToExcel {
      * @param name
      * @return
      */
-    private String prettyNameMapping(String name) {
+    private fun prettyNameMapping(name: String): String? {
+        var name: String? = name
         if (null != mPrettyNameMapping) {
-            if (mPrettyNameMapping.containsKey(name)) {
-                name = mPrettyNameMapping.get(name);
+            if (mPrettyNameMapping!!.containsKey(name)) {
+                name = mPrettyNameMapping!![name]
             }
         }
-        return name;
+        return name
     }
 
-    public interface ExportListener {
-        void onStart();
-
-        void onCompleted(String filePath);
-
-        void onError(Exception e);
+    interface ExportListener {
+        fun onStart()
+        fun onCompleted(filePath: String?)
+        fun onError(e: Exception?)
     }
 
     /**
      * Interface class for the custom formatter
      */
-    public interface ExportCustomFormatter {
-        String process(String columnName, String value);
+    interface ExportCustomFormatter {
+        fun process(columnName: String?, value: String?): String?
+    }
+
+    companion object {
+        private val handler = Handler(Looper.getMainLooper())
     }
 }
