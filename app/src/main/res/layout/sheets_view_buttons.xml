@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/buttons"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsDivider
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetButtonContainer
+        android:id="@+id/btnNegativeContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_margin_x2"
+        android:layout_marginTop="@dimen/standard_margin_mini"
+        android:layout_marginEnd="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_margin_mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/custom_font_style_s"
+        app:layout_constraintEnd_toStartOf="@+id/btnPositiveContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetButtonContainer
+        android:id="@+id/btnPositiveContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin_mini"
+        android:layout_marginEnd="@dimen/standard_margin_x2"
+        android:layout_marginBottom="@dimen/standard_margin_mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNegativeContainer"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,86 +2,147 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:layoutDirection="rtl"
     tools:context=".ui.activities.MainActivity">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/standard_margin"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/standard_padding"
-            android:text="گنجینه من"
-            android:textColor="@color/fontColorBlack"
-            style="@style/custom_font_style_l"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvEmptyListTop"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="#cccccc"
-            android:gravity="center"
-            android:text="تمامی پکیج ها در لیست هستند"
-            android:textSize="20sp"
-            android:visibility="gone" />
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/standard_margin"
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            tools:itemCount="8"
-            tools:listitem="@layout/list_item_main" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdShowColorPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/colorPrimaryDark"
+                app:strokeWidth="0.75dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/colorPrimary" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp"
-            android:text="صفحه اصلی"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="رنگ"
+                        android:textColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            tools:itemCount="8"
-            tools:listitem="@layout/list_item_main" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/content"
+                        style="@style/custom_font_style_s"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای انتخاب لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title"
+                        app:layout_constraintStart_toStartOf="@+id/title"
+                        app:layout_constraintTop_toBottomOf="@+id/title" />
 
-        <TextView
-            android:id="@+id/tvEmptyListBottom"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="#cccccc"
-            android:gravity="center"
-            android:text="لیست پکیج های پر کاربرد خالی است"
-            android:textSize="20sp"
-            android:visibility="gone" />
-    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/custom_font_style_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/standard_padding"
+                android:text="گنجینه من"
+                android:textColor="@color/fontColorBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEmptyListTop"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="#cccccc"
+                android:gravity="center"
+                android:text="تمامی پکیج ها در لیست هستند"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="8"
+                tools:listitem="@layout/list_item_main" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:text="صفحه اصلی"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="8"
+                tools:listitem="@layout/list_item_main" />
+
+            <TextView
+                android:id="@+id/tvEmptyListBottom"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="#cccccc"
+                android:gravity="center"
+                android:text="لیست پکیج های پر کاربرد خالی است"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="240dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
     <com.nahal.developer.family.nahal.madules.fm_BottomBar.SmoothBottomBar
         android:id="@+id/bottomBar"

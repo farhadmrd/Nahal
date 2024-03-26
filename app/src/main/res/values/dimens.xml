@@ -8,6 +8,7 @@
     <dimen name="standard_margin_med">4dp</dimen>
     <dimen name="standard_margin">8dp</dimen>
     <dimen name="standard_margin_x2">16dp</dimen>
+    <dimen name="standard_margin_x1.5">12dp</dimen>
     <dimen name="standard_margin_x3">24dp</dimen>
     <dimen name="standard_margin_x4">32dp</dimen>
     <dimen name="standard_margin_x5">40dp</dimen>
@@ -22,4 +23,8 @@
     <!--Card View-->
     <dimen name="standard_card_elevation">2dp</dimen>
     <dimen name="standard_card_radius">8dp</dimen>
+
+    <dimen name="sheetsTextSizeTitle">20sp</dimen>
+    <dimen name="sheetsTextSizeSubheading">16sp</dimen>
+    <dimen name="sheetsTextSizeBody">14sp</dimen>
 </resources>

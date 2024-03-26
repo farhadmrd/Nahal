@@ -1,26 +1,39 @@
 package com.nahal.developer.family.nahal.ui.activities
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.nahal.developer.family.nahal.R
 import com.nahal.developer.family.nahal.adapters.DragAndDropSelectFeatureAdapter
 import com.nahal.developer.family.nahal.core.UAppCompatActivity
 import com.nahal.developer.family.nahal.event.Event
 import com.nahal.developer.family.nahal.madules.fm_DrogableRecyclerView.Listener
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.color.ColorListener
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.color.ColorSheet
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.color.ColorView
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.NegativeListener
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.SheetStyle
 import com.nahal.developer.family.nahal.madules.fm_Toaster.FMToaster
 
 class MainActivity : UAppCompatActivity(), Listener {
     private var doubleBackToExitPressedOnce = false
     lateinit var tvEmptyListTop: TextView
     lateinit var tvEmptyListBottom: TextView
+    lateinit var relMain: RelativeLayout
     lateinit var recyclerTop: RecyclerView
     lateinit var recyclerBottom: RecyclerView
+    lateinit var crdShowColorPicker: MaterialCardView
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
@@ -44,6 +57,43 @@ class MainActivity : UAppCompatActivity(), Listener {
         setContentView(R.layout.activity_main)
         initUi()
         setupDrag()
+        setupEvent()
+        applyThemeMode(ThemeMode.DAY_MODE)
+    }
+
+    private fun setupEvent() {
+        crdShowColorPicker.setOnClickListener { showColorSheet() }
+    }
+
+    private fun showColorSheet() {
+        ColorSheet().show(this) { // Build and show
+            style(SheetStyle.BOTTOM_SHEET)
+
+            title("رنگ پس زمینه")
+            defaultView(ColorView.TEMPLATE) // Set the default view when the sheet is visible
+            // disableSwitchColorView() Disable switching between template and custom color view
+            onPositive("انتخاب") { color ->
+                // Use Color
+                relMain.setBackgroundColor(color)
+            }
+            onNegative("لغو") {
+
+            }
+        }
+    }
+
+    private fun applyThemeMode(themeMode: ThemeMode) {
+        when (themeMode) {
+            ThemeMode.NIGHT_MODE -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            ThemeMode.DAY_MODE -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+    }
+
+    enum class ThemeMode {
+        AUTO,
+        NIGHT_MODE,
+        DAY_MODE
     }
 
     private fun initUi() {
@@ -51,6 +101,8 @@ class MainActivity : UAppCompatActivity(), Listener {
         tvEmptyListBottom = findViewById(R.id.tvEmptyListBottom)
         recyclerTop = findViewById(R.id.rvTop)
         recyclerBottom = findViewById(R.id.rvBottom)
+        crdShowColorPicker = findViewById(R.id.crdShowColorPicker)
+        relMain = findViewById(R.id.relMain)
     }
 
     private fun setupDrag() {
@@ -66,7 +118,7 @@ class MainActivity : UAppCompatActivity(), Listener {
 
             recyclerTop.setHasFixedSize(true)
             recyclerTop.layoutManager = GridLayoutManager(
-                this,2,
+                this, 2,
                 LinearLayoutManager.VERTICAL, false
             )
 
@@ -86,6 +138,7 @@ class MainActivity : UAppCompatActivity(), Listener {
             topList.add("یادداشت")
             topList.add("ابزار ها")
             topList.add("ایده نگار")
+            topList.add("موزیک پلیر")
 
             val topListAdapter = DragAndDropSelectFeatureAdapter(topList, this)
             recyclerTop.adapter = topListAdapter
@@ -101,7 +154,7 @@ class MainActivity : UAppCompatActivity(), Listener {
         try {
             recyclerBottom.setHasFixedSize(true)
             recyclerBottom.layoutManager = GridLayoutManager(
-                this,2,
+                this, 2,
                 LinearLayoutManager.VERTICAL, false
             )
 
