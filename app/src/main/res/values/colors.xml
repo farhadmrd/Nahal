@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <color name="colorPrimary">#FFffff</color>
+    <color name="colorPrimary">#01bf07</color>
     <!--    <color name="colorPrimaryDark">#2dcc70</color>-->
-    <color name="colorPrimaryDark">#01bf07</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="divider_color">#FBCC25</color>
     <color name="colorAccent">#2196F3</color>
 

@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!--Margin-->
+    <dimen name="standard_margin_zero">0dp</dimen>
     <dimen name="standard_margin_mini">2dp</dimen>
     <dimen name="standard_margin_minimum">1dp</dimen>
     <dimen name="standard_margin_med">4dp</dimen>
@@ -17,6 +18,7 @@
     <dimen name="standard_margin_x8">64dp</dimen>
     <dimen name="standard_margin_x9">72dp</dimen>
     <dimen name="standard_margin_x10">80dp</dimen>
+    <dimen name="minHeight">56dp</dimen>
     <!--Padding-->
     <dimen name="standard_padding">4dp</dimen>
     <dimen name="standard_padding_x2">8dp</dimen>

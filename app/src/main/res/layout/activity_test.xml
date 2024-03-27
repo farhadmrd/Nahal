@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:layoutDirection="rtl"
+    tools:context=".ui.activities.MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/standard_margin"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdShowColorPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="رنگ"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای انتخاب لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title"
+                        app:layout_constraintStart_toStartOf="@+id/title"
+                        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title2"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="چی بپزم؟"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای انتخاب لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title2"
+                        app:layout_constraintStart_toStartOf="@+id/title2"
+                        app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title3"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="معرفی نقش ها"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای مشاهده لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title3"
+                        app:layout_constraintStart_toStartOf="@+id/title3"
+                        app:layout_constraintTop_toBottomOf="@+id/title3" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdSnooze"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title4"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="تنظیم زمان"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای مشاهده لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title4"
+                        app:layout_constraintStart_toStartOf="@+id/title4"
+                        app:layout_constraintTop_toBottomOf="@+id/title4" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title5"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="ورود اطلاعات"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای مشاهده لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title5"
+                        app:layout_constraintStart_toStartOf="@+id/title5"
+                        app:layout_constraintTop_toBottomOf="@+id/title5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_med"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackgroundBorderless"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="0.75dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title6"
+                        style="@style/custom_font_style_m"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="ایجاد کلمه عبور"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/custom_font_style_s"
+                        android:layout_width="@dimen/standard_margin_zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="برای ایجاد لمس کنید"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/title6"
+                        app:layout_constraintStart_toStartOf="@+id/title6"
+                        app:layout_constraintTop_toBottomOf="@+id/title6" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                style="@style/custom_font_style_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/standard_padding"
+                android:text="گنجینه من"
+                android:textColor="@color/fontColorBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEmptyListTop"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="#cccccc"
+                android:gravity="center"
+                android:text="تمامی پکیج ها در لیست هستند"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="8"
+                tools:listitem="@layout/list_item_main" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:text="صفحه اصلی"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="8"
+                tools:listitem="@layout/list_item_main" />
+
+            <TextView
+                android:id="@+id/tvEmptyListBottom"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="#cccccc"
+                android:gravity="center"
+                android:text="لیست پکیج های پر کاربرد خالی است"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="240dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.nahal.developer.family.nahal.madules.fm_BottomBar.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        style="@style/custom_font_style_s"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        app:activeItem="3"
+        app:backgroundColor="@color/colorPrimaryDark"
+        app:badgeColor="@color/toastBackColor"
+        app:cornerRadius="@dimen/standard_margin_x2"
+        app:duration="200"
+        app:iconSize="32dp"
+        app:iconTint="@color/colorPrimary"
+        app:iconTintActive="@color/colorPrimaryDark"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorRadius="@dimen/standard_margin_x2"
+        app:itemFontFamily="@font/yekan_n"
+        app:menu="@menu/main_menu"
+        app:sideMargins="@dimen/standard_margin_med"
+        app:textColor="@color/fontColorWhite"
+        app:textSize="12sp" />
+</RelativeLayout>

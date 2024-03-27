@@ -16,13 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleSmall"
-            android:layout_marginRight="4dp"/>
+            android:layout_marginRight="@dimen/standard_margin_med"/>
 
         <TextView
             android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="@dimen/standard_margin_med"
             android:text="@string/loading"
             android:textColor="@android:color/black"
             android:textSize="14sp"/>

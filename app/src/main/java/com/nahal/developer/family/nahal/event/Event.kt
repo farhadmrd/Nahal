@@ -20,8 +20,16 @@ package com.nahal.developer.family.nahal.event
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+import android.content.Context
+import android.media.MediaPlayer
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.view.View
 import com.android.volley.VolleyError
+import com.nahal.developer.family.nahal.R
 import com.nahal.developer.family.nahal.core.UBase
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.color.ColorSheet
+import com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.SheetStyle
 import com.nahal.developer.family.nahal.madules.fm_Toaster.FMToaster
 
 open class Event : UBase() {
@@ -66,6 +74,32 @@ open class Event : UBase() {
             } catch (e: java.lang.Exception) {
                 ShowErrorForTester(e, "Event")
                 0
+            }
+        }
+
+        open fun ConnectivityManager?.isCurrentlyConnected() = when (this) {
+            null -> false
+            else ->
+                activeNetwork
+                    ?.let(::getNetworkCapabilities)
+                    ?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                    ?: false
+        }
+
+       open fun showColorSheet(context : Context, view: View?) {
+            ColorSheet().show(context) { // Build and show
+                style(SheetStyle.BOTTOM_SHEET)
+
+                title("رنگ پس زمینه")
+                defaultView(com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.color.ColorView.TEMPLATE) // Set the default view when the sheet is visible
+                // disableSwitchColorView() Disable switching between template and custom color view
+                onPositive("انتخاب") { color ->
+                    // Use Color
+                    view?.setBackgroundColor(color)
+                }
+                onNegative("لغو") {
+
+                }
             }
         }
     }

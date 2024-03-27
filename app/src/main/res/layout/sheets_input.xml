@@ -7,5 +7,5 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:fadeScrollbars="false"
-    android:paddingTop="4dp"
-    android:paddingBottom="16dp" />
+    android:paddingTop="@dimen/standard_margin_med"
+    android:paddingBottom="@dimen/standard_margin_x2" />

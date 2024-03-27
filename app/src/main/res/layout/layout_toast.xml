@@ -13,8 +13,8 @@
 
         <View
             android:id="@+id/color_strip_view"
-            android:layout_width="4dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/standard_margin_med"
+            android:layout_height="@dimen/standard_margin_zero"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/left_drawable_image_view"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/standard_margin_x3"
+            android:layout_height="@dimen/standard_margin_x3"
             android:layout_marginStart="@dimen/standard_margin"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"

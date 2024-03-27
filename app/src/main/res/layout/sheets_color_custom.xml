@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
-    android:background="@drawable/selector_background_color"
+    android:background="@color/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,8 +25,8 @@
 
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/hexLabel"
-        style="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:layout_width="0dp"
+        style="@style/custom_font_style_s"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/standard_margin_x6"
         android:layout_marginEnd="@dimen/standard_margin_x2"
@@ -41,7 +41,7 @@
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/hexValue"
         style="@style/TextAppearance.MaterialComponents.Caption"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/customColorView"
         app:layout_constraintEnd_toEndOf="@+id/hexLabel"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="@dimen/standard_margin_x2"
         android:clickable="true"
         android:focusable="true"
-        android:padding="8dp"
+        android:padding="@dimen/standard_margin"
         android:src="@drawable/sheets_ic_copy"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/btnPaste"
@@ -67,10 +67,10 @@
         android:id="@+id/btnPaste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/standard_margin"
         android:clickable="true"
         android:focusable="true"
-        android:padding="8dp"
+        android:padding="@dimen/standard_margin"
         android:src="@drawable/sheets_ic_paste"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
 
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsDivider
         android:id="@+id/divider"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,15 +94,15 @@
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/labelBarrier"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
+        android:layout_height="@dimen/standard_margin_zero"
         app:barrierDirection="end"
         app:constraint_referenced_ids="alphaLabel,redLabel,greenLabel,blueLabel" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/valueBarrier"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
+        android:layout_height="@dimen/standard_margin_zero"
         app:barrierDirection="start"
         app:constraint_referenced_ids="alphaValue,redValue,greenValue,blueValue" />
 
@@ -118,7 +118,7 @@
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/alphaSeekBar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/standard_margin_x2"
         android:progressBackgroundTint="@color/colorAccent"
@@ -141,7 +141,7 @@
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/redLabel"
         style="@style/custom_font_style_s"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_margin_x3"
         app:layout_constraintStart_toStartOf="@+id/alphaLabel"
@@ -151,7 +151,7 @@
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/redSeekBar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:progressBackgroundTint="@color/colorAccent"
         android:progressTint="@color/colorAccent"
@@ -174,7 +174,7 @@
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/greenLabel"
         style="@style/custom_font_style_s"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_margin_x3"
         app:layout_constraintStart_toStartOf="@+id/redLabel"
@@ -182,7 +182,7 @@
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/greenSeekBar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/standard_margin_x2"
         android:progressBackgroundTint="@color/colorAccent"
@@ -205,7 +205,7 @@
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/blueLabel"
         style="@style/custom_font_style_s"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_margin_x3"
         android:layout_marginBottom="@dimen/standard_margin_x3"
@@ -215,7 +215,7 @@
 
     <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/blueSeekBar"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/standard_margin_x2"
         android:progressBackgroundTint="@color/colorAccent"

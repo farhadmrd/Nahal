@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/standard_margin_x3"
+        android:layout_height="@dimen/standard_margin_x3"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="@dimen/standard_margin_x2"
+        android:layout_marginLeft="@dimen/standard_margin_x2"
         android:src="@android:drawable/ic_dialog_info"
         app:tint="@android:color/white" />
 
@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/standard_margin_x2"
+        android:layout_marginLeft="@dimen/standard_margin_x2"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginEnd="@dimen/standard_margin_x2"
+        android:layout_marginRight="@dimen/standard_margin_x2"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:layout_toEndOf="@id/icon"
         android:layout_toRightOf="@id/icon"
         android:orientation="vertical">
@@ -46,7 +46,7 @@
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/standard_margin_med"
             style="@style/custom_font_style_s"
             android:text="@string/app_name"
             android:textColor="@android:color/white"

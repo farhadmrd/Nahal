@@ -6,17 +6,17 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?selectableItemBackground"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp">
+    android:background="@color/backgroundColor"
+    android:paddingTop="@dimen/standard_margin_med"
+    android:paddingBottom="@dimen/standard_margin_med">
 
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/label"
-        style="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:layout_width="0dp"
+        style="@style/custom_font_style_s"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="@dimen/standard_margin_x3"
+        android:layout_marginTop="@dimen/standard_margin"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,11 +24,11 @@
 
     <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
         android:id="@+id/content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
-        android:layout_width="0dp"
+        style="@style/custom_font_style_m"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="@dimen/standard_margin_x3"
+        android:layout_marginTop="@dimen/standard_margin_med"
         android:lineSpacingMultiplier="1.2"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +37,10 @@
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:barrierMargin="12dp"
+        app:barrierMargin="@dimen/standard_margin_x1.5"
         app:constraint_referenced_ids="label,content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -49,11 +49,11 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/standard_margin_x2"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:padding="8dp"
+        android:padding="@dimen/standard_margin"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,19 +62,19 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
-        style="@style/TextAppearance.MaterialComponents.Body2"
-        android:layout_width="0dp"
+        style="@style/custom_font_style_m"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="@dimen/standard_margin_x2"
+        android:layout_marginTop="@dimen/standard_margin_x1.5"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:minWidth="200dp"
-        android:minHeight="42dp"
+        android:minHeight="@dimen/minHeight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_min="42dp"
+        app:layout_constraintHeight_min="@dimen/minHeight"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toBottomOf="@+id/barrier"
         app:layout_goneMarginStart="20dp"
-        app:layout_goneMarginTop="0dp" />
+        app:layout_goneMarginTop="@dimen/standard_margin_zero" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

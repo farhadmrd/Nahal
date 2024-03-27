@@ -20,16 +20,16 @@
             android:orientation="vertical">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/crdShowColorPicker"
+                android:id="@+id/crdTest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="@dimen/standard_margin_med"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackgroundBorderless"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="@dimen/standard_margin_x1.5"
+                app:cardElevation="@dimen/standard_margin_zero"
+                app:strokeColor="@color/colorPrimary"
                 app:strokeWidth="0.75dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,14 +39,14 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/title"
                         style="@style/custom_font_style_m"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/standard_margin_zero"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="رنگ"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_marginStart="@dimen/standard_margin_x3"
+                        android:layout_marginTop="@dimen/standard_margin_x2"
+                        android:layout_marginEnd="@dimen/standard_margin_x3"
+                        android:layout_marginBottom="@dimen/standard_margin_x2"
+                        android:text="صفحه تست"
+                        android:textColor="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -54,12 +54,12 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/content"
                         style="@style/custom_font_style_s"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/standard_margin_zero"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="24dp"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:layout_marginBottom="@dimen/standard_margin_x3"
                         android:lineSpacingMultiplier="1.2"
-                        android:text="برای انتخاب لمس کنید"
+                        android:text="برای تست المان ها لمس کنید"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/title"
                         app:layout_constraintStart_toStartOf="@+id/title"
@@ -69,73 +69,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/custom_font_style_l"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/standard_padding"
-                android:text="گنجینه من"
-                android:textColor="@color/fontColorBlack"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvEmptyListTop"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:background="#cccccc"
-                android:gravity="center"
-                android:text="تمامی پکیج ها در لیست هستند"
-                android:textSize="20sp"
-                android:visibility="gone" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:itemCount="8"
-                tools:listitem="@layout/list_item_main" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/colorPrimary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="20dp"
-                android:paddingBottom="10dp"
-                android:text="صفحه اصلی"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:itemCount="8"
-                tools:listitem="@layout/list_item_main" />
-
-            <TextView
-                android:id="@+id/tvEmptyListBottom"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:background="#cccccc"
-                android:gravity="center"
-                android:text="لیست پکیج های پر کاربرد خالی است"
-                android:textSize="20sp"
-                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
@@ -151,14 +84,14 @@
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         app:activeItem="0"
-        app:backgroundColor="@color/colorPrimary"
+        app:backgroundColor="@color/colorPrimaryDark"
         app:badgeColor="@color/toastBackColor"
         app:cornerRadius="@dimen/standard_margin_x2"
         app:duration="200"
         app:iconSize="32dp"
-        app:iconTint="@color/colorPrimaryDark"
-        app:iconTintActive="@color/colorPrimary"
-        app:indicatorColor="@color/colorPrimaryDark"
+        app:iconTint="@color/colorPrimary"
+        app:iconTintActive="@color/colorPrimaryDark"
+        app:indicatorColor="@color/colorPrimary"
         app:indicatorRadius="@dimen/standard_margin_x2"
         app:itemFontFamily="@font/yekan_n"
         app:menu="@menu/main_menu"

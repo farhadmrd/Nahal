@@ -20,6 +20,9 @@
             android:name=".ui.activities.MainActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activities.testActivities.TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.publicActivities.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"

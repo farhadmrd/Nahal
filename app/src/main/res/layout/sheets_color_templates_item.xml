@@ -10,9 +10,9 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="4dp"
+        android:layout_width="@dimen/standard_margin_zero"
+        android:layout_height="@dimen/standard_margin_zero"
+        android:layout_margin="@dimen/standard_margin_med"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +32,8 @@
 
         <ImageView
             android:id="@+id/colorActive"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/standard_margin_x3"
+            android:layout_height="@dimen/standard_margin_x3"
             android:visibility="gone"
             android:src="@drawable/sheets_ic_color_selected"
             app:layout_constraintBottom_toBottomOf="parent"

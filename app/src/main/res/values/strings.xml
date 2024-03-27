@@ -12,8 +12,8 @@
     <string name="load_end">دیتای جدیدی وجود ندارد</string>
     <string name="load_complete">برای موارد بیشتر لمس نمائید</string>
 
-    <string name="sheets_at_least_placeholder" translatable="true">At least %1$s</string>
-    <string name="sheets_at_most_placeholder" translatable="true">At most %1$s</string>
+    <string name="sheets_at_least_placeholder" translatable="true">حداقل %1$s</string>
+    <string name="sheets_at_most_placeholder" translatable="true">حداکثر %1$s</string>
 
     <string name="sheets_hour_code" translatable="true">h</string>
     <string name="sheets_minute_code" translatable="true">m</string>
@@ -34,12 +34,9 @@
     <string name="sheets_clipboard_paste_invalid_color_code" translatable="true">aRGB-Code معتبر جایگذاری کنید.</string>
     <string name="sheets_clipboard_paste_invalid_empty" translatable="true">چیزی برای جایگذاری نیست</string>
     <string name="sheets_select" translatable="true">انتخاب</string>
-    <string name="sheets_select_at_least" translatable="true">Select at least %d.</string>
-    <string name="sheets_select_at_most" translatable="true">Select at most %d.</string>
+    <string name="sheets_select_at_least" translatable="true">حداقل انتخاب %d مورد</string>
+    <string name="sheets_select_at_most" translatable="true">حداکثر انتخاب %d مورد</string>
     <string name="sheets_current_of_total" translatable="true">%1$d of %2$d</string>
-    <string name="sheets_select_at_least_files" translatable="true">Select at least %d files.</string>
-    <string name="sheets_create_folder" translatable="true">ایجاد پوشه</string>
-    <string name="sheets_folder_empty" translatable="true">پوشه خالی است</string>
     <string name="sheets_navigation_back" translatable="true">بازگشت</string>
     <string name="sheets_navigation_home" translatable="true">خانه</string>
 </resources>

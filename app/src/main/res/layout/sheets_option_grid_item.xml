@@ -9,16 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/optionContainer"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/standard_margin_zero"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
+        android:layout_margin="@dimen/standard_margin_med"
         android:layout_weight="1"
         android:background="@drawable/sheets_ripple_option_selector"
         android:clickable="true"
         android:focusable="true"
         android:minHeight="96dp"
         android:paddingHorizontal="6dp"
-        android:paddingVertical="16dp"
+        android:paddingVertical="@dimen/standard_margin_x2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/standard_margin_x3"
+            android:layout_height="@dimen/standard_margin_x3"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +36,10 @@
 
         <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
             android:id="@+id/title"
-            style="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:layout_width="0dp"
+            style="@style/custom_font_style_s"
+            android:layout_width="@dimen/standard_margin_zero"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/standard_margin_x1.5"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="center"
@@ -48,14 +48,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_goneMarginTop="0dp" />
+            app:layout_goneMarginTop="@dimen/standard_margin_zero" />
 
         <com.nahal.developer.family.nahal.madules.fm_KBottomSheet.sheets.core.views.SheetsContent
             android:id="@+id/subtitle"
             style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/standard_margin_zero"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/standard_margin_med"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="center"
@@ -64,7 +64,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_goneMarginTop="0dp" />
+            app:layout_goneMarginTop="@dimen/standard_margin_zero" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
